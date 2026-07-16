@@ -92,10 +92,10 @@
 
 \section{\makebox[\widthof{\faTrophy}][c]{\color{CVBlue}\faTrophy}\ 竞赛经历}
 \textbf{RoboCup机器人世界杯} \hfill 2024.05 -- 2026.07 \titlebreak
-自 2024 年加入浙江大学 ZJUDancer 战队参与小仿人机器人比赛相关工作，主要负责小仿人机器人的步态与路径规划。2025 年 5 月参加 RoboCup 世界杯中国赛，在小仿人（Kidsize）组别中取得亚军（一等奖）；2025 年 7 月参加世界赛，以主力队员身份（排名前三）获得国际二等奖。
+自 2024 年加入浙江大学 ZJUDancer 战队参与小仿人机器人比赛相关工作。2025 年 5 月参加 RoboCup 世界杯中国赛，取得亚军；2025 年 7 月参加世界赛，获得国际二等奖。
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{RoboCup机器人世界杯中国赛}（2024.05 -- 2025.05）：改进原有倒立摆步态模型以提升机器人调整速度、精度与运动稳定性，并尝试将其拓展为弹簧线性倒立摆模型，在仿真环境下完成步态求解与实现；改进踢球动作的示教实现方式，引入盘球步态，在原有模型下通过重新规划悬荡脚运动轨迹实现带球；参与基于 Gazebo 的仿人机器人仿真环境搭建。
-    \item \textbf{RoboCup机器人世界杯世界赛}（2025.05 -- 2025.09）：基于 ROS 和 UDP 通信协议搭建多机通信平台，在行为树中引入多机协同机制，使多台机器人能够同时上场且互不干扰；实现机器人踢球与盘球步态切换的决策树，使不同身份机器人能够自主判断当前适合的对球步态；实现利用 Dubins 曲线求解接近足球的路径规划，使机器人在接近球时同步调整自身方向，具备直接攻门能力。
+    \item \textbf{RoboCup机器人世界杯中国赛}（2024.05 -- 2025.05）：改进原有倒立摆步态模型以提升机器人调整速度、精度与运动稳定性；改进踢球动作的示教实现方式，在原有模型下通过重新规划悬荡脚运动轨迹实现带球。
+    \item \textbf{RoboCup机器人世界杯世界赛}（2025.05 -- 2025.09）：在行为树中引入多机协同机制；实现机器人踢球与盘球步态切换；实现利用 Dubins 曲线求解接近足球的路径规划。
     \item \textbf{RoboCup机器人世界杯中国赛}（2025.09 -- 2026.05）：在高擎机器人基座上优化多机协同策略和路径规划，尝试实现vision-kick。
 \end{itemize}
 
@@ -103,7 +103,7 @@
 
 
 \section{\makebox[\widthof{\faUsers}][c]{\color{CVBlue}\faUsers}\ 项目经历}
-\textbf{SRTP基于末端力控的机械臂柔顺轨迹跟踪系统} \hfill 2024.05 -- 2025.05 \titlebreak
+\textbf{基于末端力控的机械臂柔顺轨迹跟踪系统} \hfill 2024.05 -- 2025.05 \titlebreak
 项目描述：在六自由度机械臂平台上实现柔顺控制，并能够对未知曲面进行跟踪；在此基础上，基于触觉信息使用 LSTM 架构实现夹持柔性工具的轨迹跟踪。
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
     \item \textbf{柔顺控制：}基于 ROS 部署传感器与机械臂平台通信，在商家代码基础上完善 ROS 框架下的机械臂位置与速度控制，编写导纳控制算法并在实机上完成验证。
@@ -114,15 +114,19 @@
 \textbf{基于人类视频的具身操作策略} \hfill 2026.01 -- 至今 \titlebreak
 项目描述：通过从人类视频中提取人手关键点计算位姿，获得人类动作，并经过diffusion policy去噪弥合具身差异，用以微调VLA
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
+    \item \textbf{人手关键点提取：}使用hamer提取人手关键点，Depth AnythingV2获取深度图，Grounded SAM分割目标物体掩码，模拟机械臂动作。
     \item \textbf{diffusion policy：}基于官方源码修改进行训练，支持从带噪样本去噪恢复
-    \item \textbf{VLA：}进行VLA微调，支持从人类视频中提取的动作进行微调训练，在libero平台验证
+    \item \textbf{VLA：}进行VLA微调，使用从人类视频中提取的动作进行微调训练，在libero测试
 \end{itemize}
 
 
 \textbf{VLM-VLABenchmark} \hfill 2026.05 -- 至今 \titlebreak
 项目描述：使用机器人操作数据构建VQA，用以测试VLM在具身操作任务中的表现，并研究对以其为骨干的VLA实际表现的影响。
 \begin{itemize}[nosep, topsep=\intraProjectListTopSep]
-    \item \textbf{任务构建：}基于VLM+Grounding Dino的方法，对单视角、多视角、历史序列输入数据进行VQA任务构建
+    \item \textbf{任务构建：}对单视角、多视角、历史序列输入数据进行VQA任务构建，任务包含高层次任务规划、低层次轨迹和抓取位姿决定、空间和环境感知等10个任务
+    \item \textbf{数据筛选：}从Droid、AgibotWorld、Robomind、Robotwins挖掘机器人操作数据，使用亮度、对比度、模糊程度等指标对视频进行抽帧初筛，使用Qwen3.5-35B-A3B判别是否适合对应任务，进行复筛
+    \item \textbf{QA生成：}部分问题利用原数据信息设置答案和干扰项；空间感知类任务使用VLM找物体+Grounded SAM进行标注；抓取类任务使用Grasp Gen进行位姿标注
+    \item \textbf{测试：}在闭源高级模型和人类测试验证数据可靠性；对VLA任务常见较小参数开源模型（Qwen系列等）进行VLA和VLM同步测试，进行分任务、输入类型的数据相关性分析
 \end{itemize}
 
 \section{\makebox[\widthof{\faList}][c]{\color{CVBlue}\faList}\ 获奖情况}
@@ -137,6 +141,5 @@
 \section{\makebox[\widthof{\faInfo}][c]{\color{CVBlue}\faInfo}\ 其他}
 \begin{itemize}[parsep=0.5ex]
     \item \textbf{英语水平：}CET-6：558，TOEFL：97
-    \item \textbf{社会工作：}机器人工程 2201 班班长
 \end{itemize}
 \end{document}
